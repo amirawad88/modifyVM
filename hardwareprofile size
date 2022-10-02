@@ -1,0 +1,8 @@
+$rg = "morepowershelldsc"                               #creating a variable for the resource group
+$vmname = "backendserver2"                              #creating a variable for the vm
+get-azvmsize -resourcegroupname $rg -vmname $vm         #showing the current size of the vm
+$newvmsize = "Standard_DS1_v2"                          #creating a new variable for the vm size and assigning the size 
+$vm = get-azvm -resourcegroupname $rg -vmname $vmname   #showing the current config for the vm variable
+$vm                                                     #showing the current 
+$vm.HardwareProfile.VMsize = $newvmsize                 #creating newvmsize variable specifying the hardwareprofile size
+update-azvm -vm $vm -resourcegroupname $rg              #updating the hardwarprofile size
